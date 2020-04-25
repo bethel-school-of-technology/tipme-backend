@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var users = require('../models/users');
+
+router.get('/login', (req, res) => {
+    res.send('welcome to login');
+});
 
 router.post('/login', (req, res, next) => {
     console.log(req.body);
