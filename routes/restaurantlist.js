@@ -1,6 +1,7 @@
   var express = require('express');
   var router = express.Router();
-  var restaurants = require('../models/restaurantList');
+  
+
   
   router.get('/restaurantlist', function(req, res){
    var MongoClient = mongodb.MongoClient;

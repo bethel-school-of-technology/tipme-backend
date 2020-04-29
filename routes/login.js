@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var users = require('../models/users');
 
-router.get('/login', (req, res) => {
+
+router.get('/', (req, res) => {
     res.send('welcome to login');
 });
+
+router.get('/:id', (req, res) => {
+  res.send();
+})
 
 router.post('/login', (req, res, next) => {
     console.log(req.body);
@@ -33,6 +37,14 @@ router.post('/login', (req, res, next) => {
         })
       }
     })
+  });
+
+  router.patch('/:id', (req, res) => {
+
+  });
+
+  router.delete('/:id', (req, res) => {
+
   });
 
   module.exports = router

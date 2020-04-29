@@ -1,6 +1,13 @@
 var express = require('express');
-var router = express.router()
-var users = require('../models/users');
+var router = express.Router();
+
+router.get('/', (req, res) => {
+  res.send('Please sign up!');
+});
+
+router.get('/:id', (req, res) => {
+  res.send();
+})
 
 router.post('/signupform', (req, res, next) => {
     console.log(req.body);
