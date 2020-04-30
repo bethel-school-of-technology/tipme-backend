@@ -1,7 +1,7 @@
 module.exports.restaurants = [
   {
-    restaurants: '',
-    tip: '',
-    bill: '54'
+    name: '',
+    address: '',
+    phoneNumber: ''
   }
 ];
