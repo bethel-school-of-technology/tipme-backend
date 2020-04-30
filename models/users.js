@@ -6,3 +6,4 @@ var nameSchema = new mongoose.Schema({
    });  // <-- creates models schema for this particular models
 
 module.exports = mongoose.model('users', nameSchema); //<--  this exports the schema witha custom name.耀
+
