@@ -6,10 +6,6 @@ router.get('/', (req, res) => {
     res.send('welcome to login');
 });
 
-router.get('/:id', (req, res) => {
-  res.send();
-})
-
 router.post('/login', (req, res, next) => {
     console.log(req.body);
     users.findOne({
