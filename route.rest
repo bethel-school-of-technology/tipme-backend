@@ -1,1 +1,4 @@
-GET 
+GET http://localhost:3000/localhost:3001/restaurant
+
+###
+POST http://localhost:3001/
