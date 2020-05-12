@@ -1,38 +1,62 @@
-  var express = require('express');
-  var router = express.Router();
-  
+var express = require('express');
+var router = express.Router();
 
-  
-  router.get('/restaurantlist', function(req, res){
-   var MongoClient = mongodb.MongoClient;
+var restaurantRoutes = express.Router();
 
-    var url = 'mongodb://localhost:3001/restaurants';
 
-    MongoClient.connect(url, function(err, db){
-     if(err){
-       console.log('Unable to connect to the server', err);
-      
-     }else {
-       console.log("Connection Established");
+restaurantRoutes.route('/').get(function(req, res) {
+    Restaurant.find(function(err, restaurant) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(restaurant);
+        }
+    });
+});
 
-       var collection = db.collection('restaurants');
+restaurantRoutes.route('/:id').get(function(req, res) {
+    let id = req.params.id;
+    Restaurant.findById(id, function(err, todo) {
+        res.json(restaurant);
+    });
+});
 
-       collection.find({}).toArray(function(err, result){
-         if (err){
-           res.send(err);
-         } else if (result.length){
-           res.render('restaurantlist', {
-             "restaurantlist" : result
-           });
-         } else{
-           res.send('No documents found');
-         }
+restaurantRoutes.route('/add').post(function(req, res) {
+    let restaurant = new restaurant(req.body);
+    restaurant.save()
+        .then(restaurant => {
+            res.status(200).json({'restaurant': 'restaurant added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new restaurant failed');
+        });
+});
 
-         db.close();
-       })
+restaurantRoutes.route('/update/:id').post(function(req, res) {
+    Restaurant.findById(req.params.id, function(err, restaurant) {
+        if (!restaurant)
+            res.status(404).send("data is not found");
+        else
+        restaurant.Name = req.body.Name;
+        restaurant.Location = req.body.Location;
+        restaurant.PhoneNumber = req.body.PhoneNumber;
+        restaurant.save().then(restaurant => {
+                res.json('restaurant updated!');
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible");
+            });
+    });
+});
 
-     }
+restaurantRoutes.delete(function(req, res) {
+  restaurant.remove({
+      _id: req.params.bear_id
+  }, function(err, bear) {
+      if (err)
+          res.send(err);
+      res.json({ message: 'Successfully deleted' });
   });
 });
 
-module.exports = router
+module.exports = router;

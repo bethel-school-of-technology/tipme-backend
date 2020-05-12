@@ -1,10 +1,14 @@
-var mongoose = require('mongoose'); // This allows use of mongoose in this file
-
-var RestaurantlistSchema = new mongoose.Schema({
-    restaurantName: String,
-    location: String
-    // add other deets.
-    
-   });  // <-- creates models schema for this particular models
-
-module.exports = mongoose.model('restaurantlist', RestaurantlistSchema); //<--  this exports the schema witha custom name.耀
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+let restaurant = new Schema({
+    Name: {
+        type: String
+    },
+    Address: {
+        type: String
+    },
+    PhoneNumber: {
+        type: String
+    }
+})
+module.exports = mongoose.model('restaurant.route', restaurantSchema);
