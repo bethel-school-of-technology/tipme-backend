@@ -1,0 +1,27 @@
+{
+    "developtment": {
+        "username": "root",
+        "password": "Password1",
+        "database": "initial",
+        "host": "0.0.0.0/0",
+        "dialect": "mongodb",
+        "define": {"timestamps": true},
+        "operatorsAliases": false
+    },
+    "tipme": {
+        "username": "root",
+        "password": null,
+        "database": "tipme",
+        "host":"0.0.0.0/0",
+        "dialect":"mongodb",
+        "operatorsAliases":false
+    },
+    "production": {
+        "username":"root",
+        "password":null,
+        "database":"tipme",
+        "host":"0.0.0.0/0",
+        "dialect":"mongodb",
+        "operatorsAliases":false
+    }
+}
